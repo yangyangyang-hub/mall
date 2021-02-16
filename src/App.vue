@@ -6,7 +6,7 @@
 export default {
     name: 'app',
     components: {
-        1
+        1111
     }
 }
 </script>
