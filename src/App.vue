@@ -6,11 +6,11 @@
 export default {
     name: 'app',
     components: {
-        1111
+        
     }
 }
 </script>
 
 <style>
-
+    @import "./assets/css/base.css";
 </style>
