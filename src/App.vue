@@ -2,11 +2,11 @@
   <div id="app">
     <tab-bar>
 
-      <tab-bar-item path="/home">
+      <tab-bar-item path="/home" activeColor="red">
         <template v-slot:item-icon>
           <img src="./assets/img/tabbar/1.jpg" alt="" />
         </template>
-        <template v-slot:item-icon-active>
+        <template v-slot:item-text-active>
           <img src="./assets/img/tabbar/2.jpg" alt="" />
         </template>
         <template v-slot:item-text>
@@ -14,11 +14,11 @@
         </template>
       </tab-bar-item>
 
-      <tab-bar-item path="/category">
+      <tab-bar-item path="/category" activeColor="red">
         <template v-slot:item-icon>
           <img src="./assets/img/tabbar/1.jpg" alt="" />
         </template>
-        <template v-slot:item-icon-active>
+        <template v-slot:item-text-active>
           <img src="./assets/img/tabbar/2.jpg" alt="" />
         </template>
         <template v-slot:item-text>
@@ -26,11 +26,11 @@
         </template>
       </tab-bar-item>
 
-      <tab-bar-item path="/cart">
+      <tab-bar-item path="/cart" activeColor="red">
         <template v-slot:item-icon>
           <img src="./assets/img/tabbar/1.jpg" alt="" />
         </template>
-        <template v-slot:item-icon-active>
+        <template v-slot:item-text-active>
           <img src="./assets/img/tabbar/2.jpg" alt="" />
         </template>
         <template v-slot:item-text>
@@ -38,11 +38,11 @@
         </template>
       </tab-bar-item>
 
-      <tab-bar-item path="profile">
+      <tab-bar-item path="profile" activeColor="red">
         <template v-slot:item-icon>
           <img src="./assets/img/tabbar/1.jpg" alt="" />
         </template>
-        <template v-slot:item-icon-active>
+        <template v-slot:item-text-active>
           <img src="./assets/img/tabbar/2.jpg" alt="" />
         </template>
         <template v-slot:item-text>

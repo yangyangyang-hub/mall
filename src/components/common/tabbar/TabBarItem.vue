@@ -1,7 +1,6 @@
 <template>
   <div class="tab-bar-item" @click="itemClick">
-
-    <div v-if="!isActive">
+    <div v-if="isActive">
       <slot name="item-icon"></slot>
     </div>
 
@@ -9,28 +8,38 @@
       <slot name="item-text-active"></slot>
     </div>
 
-    <div :class="{ active: isActive }">
+    <div :style="isActiveColor">
       <slot name="item-text"></slot>
     </div>
-
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {
-      isActive: false,
-    };
+    return {};
   },
   props: {
-      path:String
+    path: String,
+    activeColor: String
   },
   methods: {
-      itemClick() {
-          this.$router.push(this.path)
+    itemClick() {
+      if (this.$route.path.indexOf(this.path) !== -1) {
+        return;
+      } else {
+        this.$router.push(this.path);
       }
-  }
+    },
+  },
+  computed: {
+    isActive() {
+      return this.$route.path.indexOf(this.path) !== -1;
+    },
+    isActiveColor() {
+      return this.isActive ? {color: this.activeColor} : {}
+    }
+  },
 };
 </script>
 
