@@ -9,10 +9,26 @@
 </template>
 
 <script>
+
+import {getHomeMultidata} from '../../network/home'
 import NavBar from '../../components/common/navbar/NavBar'
+console.log(getHomeMultidata());
+
 export default {
   components: {
     NavBar
+  },
+  data() {
+    return {
+      banners: [],
+      recommends: []
+    }
+  },
+  created() {
+    getHomeMultidata().then(res => {
+      this.banners = res.data.banner.list
+      this.recommends = res.data.recommend.list
+    })
   }
 }
 </script>
