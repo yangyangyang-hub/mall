@@ -16,9 +16,9 @@
 import {getHomeMultidata} from '../../network/home'
 
 import NavBar from '../../components/common/navbar/NavBar'
-import Swiper from './Swiper'
-import RecommendView from './RecommendView'
-import FeatureView from './FeatureView'
+import Swiper from './childComponents/Swiper'
+import RecommendView from './childComponents/RecommendView'
+import FeatureView from './childComponents/FeatureView'
 
 
 export default {
