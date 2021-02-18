@@ -7,6 +7,7 @@
       </nav-bar>
       <swiper :banner="banners"></swiper>
       <recommend-view :recommends="recommends"></recommend-view>
+      <feature-view/>
   </div>
 </template>
 
@@ -17,6 +18,7 @@ import {getHomeMultidata} from '../../network/home'
 import NavBar from '../../components/common/navbar/NavBar'
 import Swiper from './Swiper'
 import RecommendView from './RecommendView'
+import FeatureView from './FeatureView'
 
 
 export default {
@@ -24,6 +26,7 @@ export default {
     NavBar,
     Swiper,
     RecommendView,
+    FeatureView,
   },
   data() {
     return {
@@ -44,5 +47,11 @@ export default {
 .home-bar {
   background-color: var(--color-tint);
   color: #fff;
+
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 9;
 }
 </style>
