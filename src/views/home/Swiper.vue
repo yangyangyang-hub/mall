@@ -1,7 +1,7 @@
 <template>
   <div>
     <van-swipe class="my-swipe" :autoplay="3000" indicator-color="pink">
-      <van-swipe-item v-for="(item, index) in banners"  :key="index" >
+      <van-swipe-item v-for="(item, index) in banner"  :key="index" >
         <a :href="item.link">
           <img :src="item.image" alt="">
         </a>
@@ -14,22 +14,9 @@
 
 <script>
 
-import {getHomeMultidata} from '../../network/home'
+
 export default {
-  data() {
-    return {
-      banners: [],
-      recommends: [],
-    };
-  },
-  created() {
-    getHomeMultidata().then((res) => {
-      this.banners = res.data.banner.list;
-      this.recommends = res.data.recommend.list;
-      console.log(this.banners);
-      console.log(this.recommends);
-    });
-  },
+  props: ['banner']
 };
 </script>
 
