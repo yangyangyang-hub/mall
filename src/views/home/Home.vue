@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="home">
       <nav-bar class="home-bar">
         <template v-slot:center>
           <div>购物街</div>
@@ -44,6 +44,9 @@ export default {
 </script>
 
 <style>
+#home {
+  padding-top: 44px;
+}
 .home-bar {
   background-color: var(--color-tint);
   color: #fff;
