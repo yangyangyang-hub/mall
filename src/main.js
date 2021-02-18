@@ -3,7 +3,14 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-Vue.config.productionTip = false
+import Vant from 'vant';
+import 'vant/lib/index.css';
+
+import { Swipe, SwipeItem, Lazyload} from 'vant';
+
+Vue.use(Swipe);
+Vue.use(SwipeItem);
+Vue.use(Lazyload);
 
 new Vue({
   router,
