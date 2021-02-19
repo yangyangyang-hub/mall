@@ -8,9 +8,39 @@
     <swiper :banner="banners"></swiper>
     <recommend-view :recommends="recommends"></recommend-view>
     <feature-view />
-    <tab-control></tab-control>
+    <tab-control class="tab-control"></tab-control>
     <ul>
       <li>1</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>00</li>
+      <li>9</li>
+      <li>9</li>
+      <li>9</li>
+        <li>1</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>00</li>
+      <li>9</li>
+      <li>9</li>
+      <li>9</li>
+        <li>1</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>2</li>
+      <li>00</li>
+      <li>9</li>
+      <li>9</li>
+      <li>9</li>
+        <li>1</li>
       <li>2</li>
       <li>2</li>
       <li>2</li>
@@ -75,5 +105,10 @@ export default {
   right: 0;
   top: 0;
   z-index: 9;
+}
+.tab-control {
+  position: sticky;
+  top: 44px;
+
 }
 </style>
