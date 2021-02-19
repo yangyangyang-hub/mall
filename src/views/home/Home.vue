@@ -9,7 +9,7 @@
     <recommend-view :recommends="recommends"></recommend-view>
     <feature-view />
     <tab-control class="tab-control"></tab-control>
-    <goods-list></goods-list>
+    <goods-list :goods="goods['pop'].list"></goods-list>
     <ul>
       <li>1</li>
       <li>2</li>
