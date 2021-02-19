@@ -20,7 +20,7 @@
       <li>9</li>
       <li>9</li>
       <li>9</li>
-        <li>1</li>
+      <li>1</li>
       <li>2</li>
       <li>2</li>
       <li>2</li>
@@ -30,7 +30,7 @@
       <li>9</li>
       <li>9</li>
       <li>9</li>
-        <li>1</li>
+      <li>1</li>
       <li>2</li>
       <li>2</li>
       <li>2</li>
@@ -40,7 +40,7 @@
       <li>9</li>
       <li>9</li>
       <li>9</li>
-        <li>1</li>
+      <li>1</li>
       <li>2</li>
       <li>2</li>
       <li>2</li>
@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import { getHomeMultidata } from "../../network/home";
+import { getHomeMultidata, goodHomeGoods } from "../../network/home";
 
 import NavBar from "../../components/common/navbar/NavBar";
 import Swiper from "./childComponents/Swiper";
@@ -76,23 +76,34 @@ export default {
       banners: [],
       recommends: [],
       goods: {
-        pop: {page: 0, list: []},
-        news: {page: 0, list: []},
-        sell: {page: 0, list: []},
-      }
+        'pop': { page: 0, list: [] },
+        'new': { page: 0, list: [] },
+        'sell': { page: 0, list: [] },
+      },
     };
   },
   created() {
     getHomeMultidata().then((res) => {
-      console.log("11111");
       if (res == undefined) {
         return;
       } else {
-        console.log(res);
         this.banners = res.data.banner.list;
         this.recommends = res.data.recommend.list;
       }
     });
+    this.goodHomeGoods('pop')
+    this.goodHomeGoods('new')
+    this.goodHomeGoods('sell')
+
+  },
+  methods: {
+    goodHomeGoods(type) {
+      const page = this.goods[type].page + 1
+      goodHomeGoods(type, page).then((res) => {
+        this.goods[type].list.push(...res.data.list)
+        this.goods[type].page += 1
+      });
+    },
   },
 };
 </script>
@@ -114,6 +125,5 @@ export default {
 .tab-control {
   position: sticky;
   top: 44px;
-
 }
 </style>
