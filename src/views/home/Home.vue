@@ -9,6 +9,7 @@
     <recommend-view :recommends="recommends"></recommend-view>
     <feature-view />
     <tab-control class="tab-control"></tab-control>
+    <goods-list></goods-list>
     <ul>
       <li>1</li>
       <li>2</li>
@@ -58,6 +59,7 @@
 import { getHomeMultidata, goodHomeGoods } from "../../network/home";
 
 import NavBar from "../../components/common/navbar/NavBar";
+import GoodsList from '../../components/content/goods/GoodsList'
 import Swiper from "./childComponents/Swiper";
 import RecommendView from "./childComponents/RecommendView";
 import FeatureView from "./childComponents/FeatureView";
@@ -70,6 +72,7 @@ export default {
     RecommendView,
     FeatureView,
     TabControl,
+    GoodsList,
   },
   data() {
     return {
