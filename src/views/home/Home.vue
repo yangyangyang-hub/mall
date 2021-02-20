@@ -8,50 +8,8 @@
     <swiper :banner="banners"></swiper>
     <recommend-view :recommends="recommends"></recommend-view>
     <feature-view />
-    <tab-control class="tab-control"></tab-control>
-    <goods-list :goods="goods['pop'].list"></goods-list>
-    <ul>
-      <li>1</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>00</li>
-      <li>9</li>
-      <li>9</li>
-      <li>9</li>
-      <li>1</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>00</li>
-      <li>9</li>
-      <li>9</li>
-      <li>9</li>
-      <li>1</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>00</li>
-      <li>9</li>
-      <li>9</li>
-      <li>9</li>
-      <li>1</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>2</li>
-      <li>00</li>
-      <li>9</li>
-      <li>9</li>
-      <li>9</li>
-    </ul>
+    <tab-control class="tab-control" @tabclick="tabclick"></tab-control>
+    <goods-list :goods="goods[currentType].list"></goods-list>
   </div>
 </template>
 
@@ -83,6 +41,7 @@ export default {
         'new': { page: 0, list: [] },
         'sell': { page: 0, list: [] },
       },
+      currentType: 'pop'
     };
   },
   created() {
@@ -100,6 +59,17 @@ export default {
 
   },
   methods: {
+
+    tabclick(index) {
+      if(index == 0) {
+        this.currentType = 'pop'
+      } else if(index == 1) {
+        this.currentType = 'new'
+      } else{
+        this.currentType = 'sell'
+      }
+    },
+
     goodHomeGoods(type) {
       const page = this.goods[type].page + 1
       goodHomeGoods(type, page).then((res) => {
