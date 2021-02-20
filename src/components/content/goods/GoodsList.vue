@@ -24,5 +24,11 @@ export default {
 </script>
 
 <style>
-
+    .goods {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      justify-content: center;
+      
+    }
 </style>
