@@ -6,13 +6,16 @@
       </template>
     </nav-bar>
 
-    <scroll class="scroll">
+    <scroll class="scroll" ref="scroll">
       <swiper :banner="banners"></swiper>
       <recommend-view :recommends="recommends"></recommend-view>
       <feature-view />
       <tab-control class="tab-control" @tabclick="tabclick"></tab-control>
       <goods-list :goods="goods[currentType].list"></goods-list>
     </scroll>
+    <div @click="backClick">
+      <back-top></back-top>
+    </div>
   </div>
 </template>
 
@@ -26,6 +29,7 @@ import RecommendView from "./childComponents/RecommendView";
 import FeatureView from "./childComponents/FeatureView";
 import TabControl from "../../components/content/tabControl/TabControl";
 import Scroll from "../../components/common/scroll/scorll";
+import BackTop from '../../components/content/backTop/backTop'
 
 export default {
   components: {
@@ -36,6 +40,7 @@ export default {
     TabControl,
     GoodsList,
     Scroll,
+    BackTop
   },
   data() {
     return {
@@ -80,6 +85,9 @@ export default {
         this.goods[type].page += 1;
       });
     },
+    backClick() {
+      this.$refs.scroll.scroll.scrollTo(0, 0, 500)
+    }
   },
 };
 </script>

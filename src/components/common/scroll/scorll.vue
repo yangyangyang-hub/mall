@@ -7,10 +7,9 @@
 </template>
 
 <script>
-
 import BScroll from "@better-scroll/core";
-// import Pullup from "@better-scroll/pull-up";
-// BScroll.use(Pullup);
+import Pullup from "@better-scroll/pull-up";
+BScroll.use(Pullup);
 
 export default {
   data() {
@@ -19,14 +18,28 @@ export default {
     };
   },
   mounted() {
-      this.scroll = new BScroll(this.$refs.wrapper, {
+    this.initBscroll();
 
-      })
-      console.log(this.scroll);
+    console.log(this.scroll);
+  },
+  methods: {
+    initBscroll() {
+      this.scroll = new BScroll(this.$refs.wrapper, {
+        probeType: 3,
+        pullUpLoad: true,
+        click: true,  
+      });
+      this.scroll.on("pullingUp", this.pullingUpHandler)      
+    },
+
+    pullingUpHandler () {
+        console.log(1);
+        this.scroll.finishPullUp()
+        this.scroll.refresh()
+      },
   },
 };
 </script>
 
 <style>
-
 </style>
