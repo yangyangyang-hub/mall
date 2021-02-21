@@ -6,7 +6,9 @@
       </template>
     </nav-bar>
 
-    <scroll class="scroll" ref="scroll" @scroll="contentScroll">
+    <scroll class="scroll" ref="scroll"
+     @scroll="contentScroll" 
+     @pullingUp="loadMore">
       <swiper :banner="banners"></swiper>
       <recommend-view :recommends="recommends"></recommend-view>
       <feature-view />
@@ -96,6 +98,12 @@ export default {
       if(position.y <= -500) {
         this.isShow = true
       }
+    },
+    loadMore() {
+      setTimeout(() => {
+        this.goodHomeGoods(this.currentType)
+      }, 3000)
+      
     }
   },
 };

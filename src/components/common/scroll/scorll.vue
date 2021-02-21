@@ -36,6 +36,7 @@ export default {
     },
 
     pullingUpHandler () {
+      this.$emit('pullingUp')
         this.scroll.finishPullUp()
         this.scroll.refresh()
       },
