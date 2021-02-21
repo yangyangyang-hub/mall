@@ -26,23 +26,23 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less" scoped>
 .recommend {
-    display: flex;
-    width: 100%;
-    text-align: center;
-    font-size: 12px;
-    padding: 15px 0 30px;
-    border-bottom: 8px solid #eee;
-}
-
-.recommend-item {
+  display: flex;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  padding: 15px 0 30px;
+  border-bottom: 8px solid #eee;
+  .recommend-item {
     flex: 1;
+    img {
+      width: 68px;
+      height: 68px;
+      margin-bottom: 10px;
+    }
+  }
 }
-.recommend-item img {
-    width: 68px;
-    height: 68px;
-    margin-bottom: 10px;
-}
+</style>>
 
-</style>
+
