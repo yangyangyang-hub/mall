@@ -6,7 +6,7 @@
       </template>
     </nav-bar>
 
-    <scroll class="scroll" ref="scroll">
+    <scroll class="scroll" ref="scroll" @scroll="contentScroll">
       <swiper :banner="banners"></swiper>
       <recommend-view :recommends="recommends"></recommend-view>
       <feature-view />
@@ -14,7 +14,7 @@
       <goods-list :goods="goods[currentType].list"></goods-list>
     </scroll>
     <div @click="backClick">
-      <back-top></back-top>
+      <back-top v-show="isShow"></back-top>
     </div>
   </div>
 </template>
@@ -52,6 +52,7 @@ export default {
         sell: { page: 0, list: [] },
       },
       currentType: "pop",
+      isShow: false,
     };
   },
   created() {
@@ -87,6 +88,14 @@ export default {
     },
     backClick() {
       this.$refs.scroll.scroll.scrollTo(0, 0, 500)
+    },
+    contentScroll(position) {
+      if(position.y > -500) {
+        this.isShow = false
+      }
+      if(position.y <= -500) {
+        this.isShow = true
+      }
     }
   },
 };
