@@ -5,12 +5,20 @@ import store from './store'
 
 import Vant from 'vant';
 import 'vant/lib/index.css';
+import { Toast } from 'vant';
 
-import { Swipe, SwipeItem, Lazyload} from 'vant';
 
+
+import { Swipe, SwipeItem, Lazyload, Tab, Tabs, List, PullRefresh, } from 'vant';
+
+Vue.use(Tab);
+Vue.use(Tabs);
 Vue.use(Swipe);
 Vue.use(SwipeItem);
 Vue.use(Lazyload);
+Vue.use(List);
+Vue.use(PullRefresh);
+Vue.use(Toast);
 
 new Vue({
   router,

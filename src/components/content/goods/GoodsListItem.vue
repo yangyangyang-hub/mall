@@ -27,10 +27,10 @@ export default {
 
 <style>
 .goods-item {
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   position: relative;
   width: 45%;
-  margin: 0 6px 10px 6px;
+  margin: 6px 6px 0 6px;
 }
 
 .goods-item-img {
@@ -45,6 +45,7 @@ goods-item img {
 }
 
 .goods-info p {
+  margin-top: 10px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

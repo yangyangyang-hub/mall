@@ -5,17 +5,22 @@
         <div>购物街</div>
       </template>
     </nav-bar>
+    <swiper :banner="banners"></swiper>
+    <!-- 轮播图 -->
+    <recommend-view :recommends="recommends"></recommend-view>
+    <!-- 推荐 -->
+    <feature-view />
 
-    <scroll class="scroll" ref="scroll"
-     @scroll="contentScroll" 
-     @pullingUp="loadMore">
-      <swiper :banner="banners"></swiper>
-      <recommend-view :recommends="recommends"></recommend-view>
-      <feature-view />
-      <tab-control class="tab-control" @tabclick="tabclick"></tab-control>
-      <goods-list :goods="goods[currentType].list"></goods-list>
-    </scroll>
-    <div @click="backClick">
+    <tab-control @tabclick="tabclick">
+      <vant-scroll
+        :goods="goods[currentType].list"
+        :goodsName="currentType"
+        @onLoad="getHomeGoods"
+      >
+      </vant-scroll>
+    </tab-control>
+
+    <div @click="backTop">
       <back-top v-show="isShow"></back-top>
     </div>
   </div>
@@ -29,9 +34,9 @@ import GoodsList from "../../components/content/goods/GoodsList";
 import Swiper from "./childComponents/Swiper";
 import RecommendView from "./childComponents/RecommendView";
 import FeatureView from "./childComponents/FeatureView";
+import BackTop from "../../components/content/backTop/backTop";
 import TabControl from "../../components/content/tabControl/TabControl";
-import Scroll from "../../components/common/scroll/scorll";
-import BackTop from '../../components/content/backTop/backTop'
+import VantScroll from "./childComponents/VantScroll";
 
 export default {
   components: {
@@ -39,10 +44,10 @@ export default {
     Swiper,
     RecommendView,
     FeatureView,
-    TabControl,
     GoodsList,
-    Scroll,
-    BackTop
+    BackTop,
+    TabControl,
+    VantScroll,
   },
   data() {
     return {
@@ -55,10 +60,12 @@ export default {
       },
       currentType: "pop",
       isShow: false,
+      scrollTop: 0,
     };
   },
   created() {
     getHomeMultidata().then((res) => {
+      //所有获取数据
       if (res == undefined) {
         return;
       } else {
@@ -66,10 +73,17 @@ export default {
         this.recommends = res.data.recommend.list;
       }
     });
-    this.goodHomeGoods("pop");
-    this.goodHomeGoods("new");
-    this.goodHomeGoods("sell");
+
+    this.getHomeGoods("pop");
+    this.getHomeGoods("new");
+    this.getHomeGoods("sell");
+
+    // this.contentScroll()
   },
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+
   methods: {
     tabclick(index) {
       if (index == 0) {
@@ -81,30 +95,40 @@ export default {
       }
     },
 
-    goodHomeGoods(type) {
+    async getHomeGoods(type) {
       const page = this.goods[type].page + 1;
-      goodHomeGoods(type, page).then((res) => {
+      await goodHomeGoods(type, page).then((res) => {
         this.goods[type].list.push(...res.data.list);
         this.goods[type].page += 1;
       });
     },
-    backClick() {
-      this.$refs.scroll.scroll.scrollTo(0, 0, 500)
+
+    backTop() {
+      const that = this;
+      console.log(that);
+      let timer = setInterval(() => {
+        let ispeed = Math.floor(-that.scrollTop / 5);
+        document.documentElement.scrollTop = document.body.scrollTop =
+          that.scrollTop + ispeed;
+        if (that.scrollTop === 0) {
+          clearInterval(timer);
+        }
+      }, 16);
     },
-    contentScroll(position) {
-      if(position.y > -500) {
-        this.isShow = false
+
+    handleScroll() {
+      this.scrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
+
+      if (this.scrollTop < 500) {
+        this.isShow = false;
       }
-      if(position.y <= -500) {
-        this.isShow = true
+      if (this.scrollTop >= 500) {
+        this.isShow = true;
       }
     },
-    loadMore() {
-      setTimeout(() => {
-        this.goodHomeGoods(this.currentType)
-      }, 3000)
-      
-    }
   },
 };
 </script>
@@ -112,7 +136,8 @@ export default {
 <style >
 #home {
   padding-top: 44px;
-  height: 100vh;
+  height: calc(100vh - 49px);
+  /* overflow: hidden; */
 }
 .home-bar {
   background-color: var(--color-tint);
@@ -128,9 +153,4 @@ export default {
   position: sticky;
   top: 44px;
 }
-.scroll {
-  height: calc(100% - 49px);
-  overflow: hidden;
-}
-
 </style>
