@@ -1,6 +1,5 @@
 <template>
   <div>
-    <detail-nav-bar></detail-nav-bar>
       <h2>
           分类
       </h2>

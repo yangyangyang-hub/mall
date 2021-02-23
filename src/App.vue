@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <tab-bar>
-
       <tab-bar-item path="/home" activeColor="deepPink">
         <template v-slot:item-icon>
           <img src="./assets/img/tabbar/home.svg" alt="" />
@@ -50,7 +49,9 @@
         </template>
       </tab-bar-item>
     </tab-bar>
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 

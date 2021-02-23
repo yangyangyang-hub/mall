@@ -1,29 +1,31 @@
-.<template>
-  <div id="home">
-    <nav-bar class="home-bar">
-      <template v-slot:center>
-        <div>购物街</div>
-      </template>
-    </nav-bar>
-    <swiper :banner="banners"></swiper>
-    <!-- 轮播图 -->
-    <recommend-view :recommends="recommends"></recommend-view>
-    <!-- 推荐 -->
-    <feature-view />
+<template>
+  <keep-alive>
+    <div id="home">
+      <nav-bar class="home-bar">
+        <template v-slot:center>
+          <div>购物街</div>
+        </template>
+      </nav-bar>
+      <swiper :banner="banners"></swiper>
+      <!-- 轮播图 -->
+      <recommend-view :recommends="recommends"></recommend-view>
+      <!-- 推荐 -->
+      <feature-view />
 
-    <tab-control @tabclick="tabclick">
-      <vant-scroll
-        :goods="goods[currentType].list"
-        :goodsName="currentType"
-        @onLoad="getHomeGoods"
-      >
-      </vant-scroll>
-    </tab-control>
+      <tab-control @tabclick="tabclick">
+        <vant-scroll
+          :goods="goods[currentType].list"
+          :goodsName="currentType"
+          @onLoad="getHomeGoods"
+        >
+        </vant-scroll>
+      </tab-control>
 
-    <div @click="backTop">
-      <back-top v-show="isShow"></back-top>
+      <div @click="backTop">
+        <back-top v-show="isShow"></back-top>
+      </div>
     </div>
-  </div>
+  </keep-alive>
 </template>
 
 <script>
@@ -62,6 +64,9 @@ export default {
       isShow: false,
       scrollTop: 0,
     };
+  },
+  destroyed() {
+    console.log("被销毁了");
   },
   created() {
     getHomeMultidata().then((res) => {
