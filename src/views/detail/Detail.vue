@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import {getDetail} from '../../network/detail'
 import DetailNavBar from "./childCompents/DetailNavBar";
 
 export default {
@@ -20,7 +21,12 @@ export default {
   },
   created() {
     this.id = this.$route.query.id;
-    console.log(this.$route.query);
+    console.log(this.id);
+    console.log(getDetail);
+
+    getDetail(this.id).then(res => {
+      console.log(res);
+    })
   },
 };
 </script>
