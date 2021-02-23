@@ -9,12 +9,9 @@
 
 <script>
 
-import DetailNavBar from './childCompents/DetailNavBar'
 
 export default {
-  components: {
-    DetailNavBar,
-  }
+
 }
 </script>
 

@@ -6,11 +6,14 @@ import store from './store'
 import Vant from 'vant';
 import 'vant/lib/index.css';
 import { Toast } from 'vant';
+import { NavBar } from 'vant';
+
 
 
 
 import { Swipe, SwipeItem, Lazyload, Tab, Tabs, List, PullRefresh, } from 'vant';
 
+Vue.use(NavBar);
 Vue.use(Tab);
 Vue.use(Tabs);
 Vue.use(Swipe);
