@@ -1,5 +1,6 @@
 <template>
   <div>
+    <detail-nav-bar></detail-nav-bar>
       <h2>
           分类
       </h2>
@@ -7,11 +8,16 @@
 </template>
 
 <script>
-export default {
 
+import DetailNavBar from './childCompents/DetailNavBar'
+
+export default {
+  components: {
+    DetailNavBar,
+  }
 }
 </script>
 
-<style>
+<style lang="less" scoped>
 
-</style>
+</style>>

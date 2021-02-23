@@ -46,16 +46,15 @@ export default {
     window.addEventListener("scroll", this.handlePage);
   },
   methods: {
-    handlePage() {
-      if (this.page >= 5) {
-          this.finished = true;
-          this.$toast("没有更多内容了");
-        }
-    },
+    // handlePage() {
+    //   if (this.page >= 5) {
+    //       this.finished = true;
+    //       this.$toast("没有更多内容了");
+    //     }
+    // },
     onLoad() {
       this.$emit("onLoad", this.goodsName);
       this.page += 1;
-      console.log(this.page);
       setTimeout(() => {
         this.loading = false;
 
