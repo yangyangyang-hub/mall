@@ -24,6 +24,7 @@
       <div @click="backTop">
         <back-top v-show="isShow"></back-top>
       </div>
+      <div class="foot"></div>
     </div>
   </keep-alive>
 </template>
@@ -152,6 +153,10 @@ export default {
   right: 0;
   top: 0;
   z-index: 9;
+}
+.foot {
+  width: 100%;
+  height: 49px;
 }
 .tab-control {
   position: sticky;
