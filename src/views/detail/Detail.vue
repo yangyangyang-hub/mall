@@ -2,6 +2,7 @@
   <div>
     <detail-nav-bar></detail-nav-bar>
     <detail-swiper :topImages="topImages" />
+    <detail-base-info :goodsInfo="goodsInfo"></detail-base-info>
     {{ id }}
   </div>
 </template>
@@ -11,11 +12,13 @@ import { getDetail, Goods } from "../../network/detail";
 
 import DetailNavBar from "./childCompents/DetailNavBar";
 import DetailSwiper from "./childCompents/DetailSwiper";
+import DerailBaseInfo from './childCompents/DetailBaseInfo'
 
 export default {
   components: {
     DetailNavBar,
     DetailSwiper,
+    DerailBaseInfo
   },
   data() {
     return {
