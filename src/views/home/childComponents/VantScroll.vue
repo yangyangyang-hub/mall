@@ -58,10 +58,10 @@ export default {
       setTimeout(() => {
         this.loading = false;
 
-        if (this.page >= 5) {
-          this.finished = true;
-          this.$toast("没有更多内容了");
-        }
+        // if (this.page >= 5) {
+        //   this.finished = true;
+        //   this.$toast("没有更多内容了");
+        // }
       }, 1000);
     },
   },
