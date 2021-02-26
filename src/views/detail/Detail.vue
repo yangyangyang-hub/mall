@@ -4,6 +4,10 @@
     <detail-swiper :topImages="topImages" />
     <detail-base-info v-if="initSuccess" :goods="goodsInfo"></detail-base-info>
     <detail-shop-info v-if="initSuccess" :shop="shopInfo"></detail-shop-info>
+    <detail-image-info
+      v-if="initSuccess"
+      :detailInfo="detailInfo"
+    ></detail-image-info>
     {{ id }}
     <div class="foot"></div>
   </div>
@@ -16,6 +20,7 @@ import DetailNavBar from "./childCompents/DetailNavBar";
 import DetailSwiper from "./childCompents/DetailSwiper";
 import DetailBaseInfo from './childCompents/DetailBaseInfo'
 import DetailShopInfo from './childCompents/DetailShopInfo'
+import DetailImageInfo from "./childCompents/DetailImageInfo"
 
 export default {
   components: {
@@ -23,6 +28,7 @@ export default {
     DetailSwiper,
     DetailBaseInfo,
     DetailShopInfo,
+    DetailImageInfo,
   },
   data() {
     return {
@@ -31,7 +37,8 @@ export default {
       topImages: [],
       goodsInfo: {},
       initSuccess: false,
-      shopInfo: {}
+      shopInfo: {},
+      detailInfo: {}
     };
   },
    methods: {
@@ -41,6 +48,7 @@ export default {
         }, (Number(this.time || 0)));
       }
     },
+
   created() {
     this.id = this.$route.query.id;
 
@@ -56,16 +64,20 @@ export default {
         data.shopInfo.services,
         data.skuInfo.title
       );
+
       if (this.goodsInfo.price) {
         this.initSuccess = true
       }
 
-      this.shopInfo = data.shopInfo
+      this.shopInfo = data.shopInfo;
+      this.detailInfo = data.detailInfo
+
+      
     });
 
-    
-
   },
+
+
 };
 </script>
 
