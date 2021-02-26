@@ -16,7 +16,7 @@
     </div>
     <div class="info-service">
       <span class="info-service-item" v-for="index in goods.services.length-1" :key="index">
-        <img :src="goods.services[index-1].icon">
+          <img :src="goods.services[index-1].icon">
         <span>{{goods.services[index-1].name}}</span>
       </span>
     </div>
@@ -94,16 +94,21 @@ export default {
     justify-content: space-between;
     line-height: 60px;
   }
+  .info-service-item {
+    flex: 1;
+  }
 
   .info-service-item img {
-    width: 14px;
-    height: 14px;
+    width: 13px;
+    height: 13px;
     position: relative;
     top: 2px;
+    vertical-align: middle;
+    margin: 0 5px 3px 2px;
   }
 
   .info-service-item span {
-    font-size: 13px;
+    font-size: 12px;
     color: #333;
   }
 </style>>
