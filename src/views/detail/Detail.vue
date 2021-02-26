@@ -3,6 +3,7 @@
     <detail-nav-bar></detail-nav-bar>
     <detail-swiper :topImages="topImages" />
     <detail-base-info v-if="initSuccess" :goods="goodsInfo"></detail-base-info>
+    <detail-shop-info v-if="initSuccess" :shop="shopInfo"></detail-shop-info>
     {{ id }}
     <div class="foot"></div>
   </div>
@@ -14,12 +15,14 @@ import { getDetail, Goods } from "../../network/detail";
 import DetailNavBar from "./childCompents/DetailNavBar";
 import DetailSwiper from "./childCompents/DetailSwiper";
 import DetailBaseInfo from './childCompents/DetailBaseInfo'
+import DetailShopInfo from './childCompents/DetailShopInfo'
 
 export default {
   components: {
     DetailNavBar,
     DetailSwiper,
-    DetailBaseInfo
+    DetailBaseInfo,
+    DetailShopInfo,
   },
   data() {
     return {
@@ -28,6 +31,7 @@ export default {
       topImages: [],
       goodsInfo: {},
       initSuccess: false,
+      shopInfo: {}
     };
   },
    methods: {
@@ -55,7 +59,12 @@ export default {
       if (this.goodsInfo.price) {
         this.initSuccess = true
       }
+
+      this.shopInfo = data.shopInfo
     });
+
+    
+
   },
 };
 </script>
