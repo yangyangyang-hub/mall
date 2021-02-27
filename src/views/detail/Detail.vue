@@ -10,7 +10,7 @@
       :detailInfo="detailInfo"
     ></detail-image-info>
      <detail-params-info v-if="initSuccess" :paramInfo="itemParams"></detail-params-info>
-    {{ id }}
+    <datail-comment-info v-if="initSuccess" :commentInfo="commentInfo"></datail-comment-info>
     <div class="foot"></div>
   </div>
 </template>
@@ -24,6 +24,7 @@ import DetailBaseInfo from './childCompents/DetailBaseInfo'
 import DetailShopInfo from './childCompents/DetailShopInfo'
 import DetailImageInfo from "./childCompents/DetailImageInfo"
 import DetailParamsInfo from './childCompents/DetailParamsInfo'
+import DetailCommentInfo from './childCompents/DetailCommetInfo'
 
 export default {
   components: {
@@ -33,6 +34,7 @@ export default {
     DetailShopInfo,
     DetailImageInfo,
     DetailParamsInfo,
+    DetailCommentInfo,
   },
   data() {
     return {
@@ -44,6 +46,7 @@ export default {
       shopInfo: {},
       detailInfo: {},
       itemParams: {},
+      commentInfo: {}
     };
   },
    methods: {
@@ -77,7 +80,10 @@ export default {
       this.shopInfo = data.shopInfo;
       this.detailInfo = data.detailInfo
       this.itemParams = data.itemParams
-      console.log(this.itemParams);
+
+      if (data.rate.cRate !== 0) {
+        this.commentInfo = data.rate.list[0]
+      }
 
       
     });

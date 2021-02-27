@@ -27,9 +27,6 @@ export default {
   props: {
     paramInfo: {},
   },
-  created() {
-    console.log(this.paramInfo);
-  },
 };
 </script>
 
