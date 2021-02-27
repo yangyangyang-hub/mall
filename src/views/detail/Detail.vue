@@ -4,11 +4,12 @@
     <detail-swiper :topImages="topImages" />
     <detail-base-info v-if="initSuccess" :goods="goodsInfo"></detail-base-info>
     <detail-shop-info v-if="initSuccess" :shop="shopInfo"></detail-shop-info>
-    <detail-params-info v-if="initSuccess" :itemParams="itemParams"></detail-params-info>
+   
     <detail-image-info
       v-if="initSuccess"
       :detailInfo="detailInfo"
     ></detail-image-info>
+     <detail-params-info v-if="initSuccess" :paramInfo="itemParams"></detail-params-info>
     {{ id }}
     <div class="foot"></div>
   </div>
@@ -76,6 +77,7 @@ export default {
       this.shopInfo = data.shopInfo;
       this.detailInfo = data.detailInfo
       this.itemParams = data.itemParams
+      console.log(this.itemParams);
 
       
     });

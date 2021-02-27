@@ -55,9 +55,6 @@ export default {
       return (value / 10000).toFixed(1) + "万";
     },
   },
-  created() {
-      console.log(this.shop);
-  }
 };
 </script>
 

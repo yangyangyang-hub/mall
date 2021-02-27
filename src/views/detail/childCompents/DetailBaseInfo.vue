@@ -33,10 +33,6 @@ export default {
       },
     },
   },
-  created() {
-    console.log(this.goods);
-    console.log(this.goods.columns);
-  }
 };
 </script>
 
@@ -75,7 +71,6 @@ export default {
     border-radius: 8px;
     margin-left: 5px;
 
-    /*让元素上浮一些: 使用相对定位即可*/
     position: relative;
     top: -8px;
   }
