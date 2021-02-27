@@ -4,6 +4,7 @@
     <detail-swiper :topImages="topImages" />
     <detail-base-info v-if="initSuccess" :goods="goodsInfo"></detail-base-info>
     <detail-shop-info v-if="initSuccess" :shop="shopInfo"></detail-shop-info>
+    <detail-params-info v-if="initSuccess" :itemParams="itemParams"></detail-params-info>
     <detail-image-info
       v-if="initSuccess"
       :detailInfo="detailInfo"
@@ -21,6 +22,7 @@ import DetailSwiper from "./childCompents/DetailSwiper";
 import DetailBaseInfo from './childCompents/DetailBaseInfo'
 import DetailShopInfo from './childCompents/DetailShopInfo'
 import DetailImageInfo from "./childCompents/DetailImageInfo"
+import DetailParamsInfo from './childCompents/DetailParamsInfo'
 
 export default {
   components: {
@@ -29,6 +31,7 @@ export default {
     DetailBaseInfo,
     DetailShopInfo,
     DetailImageInfo,
+    DetailParamsInfo,
   },
   data() {
     return {
@@ -38,7 +41,8 @@ export default {
       goodsInfo: {},
       initSuccess: false,
       shopInfo: {},
-      detailInfo: {}
+      detailInfo: {},
+      itemParams: {},
     };
   },
    methods: {
@@ -71,6 +75,7 @@ export default {
 
       this.shopInfo = data.shopInfo;
       this.detailInfo = data.detailInfo
+      this.itemParams = data.itemParams
 
       
     });
