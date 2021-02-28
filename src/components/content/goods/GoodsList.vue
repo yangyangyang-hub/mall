@@ -11,6 +11,7 @@ import GoodsListItem from './GoodsListItem'
 export default {
   components: {
     GoodsListItem,
+    
   },
   props: {
     goods: {
@@ -18,12 +19,12 @@ export default {
       default() {
         return []
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
-<style>
+<style scoped>
     .goods {
       display: flex;
       flex-wrap: wrap;

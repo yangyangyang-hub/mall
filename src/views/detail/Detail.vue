@@ -11,12 +11,14 @@
     ></detail-image-info>
      <detail-params-info v-if="initSuccess" :paramInfo="itemParams"></detail-params-info>
     <detail-comment-info v-if="initSuccess" :commentInfo="commentInfo"></detail-comment-info>
+    <detail-recommend v-if="initRecommend" :goods="recommend"></detail-recommend>
+
     <div class="foot"></div>
   </div>
 </template>
 
 <script>
-import { getDetail, Goods } from "../../network/detail";
+import { getDetail, Goods, getRecommend } from "../../network/detail";
 
 import DetailNavBar from "./childCompents/DetailNavBar";
 import DetailSwiper from "./childCompents/DetailSwiper";
@@ -25,6 +27,7 @@ import DetailShopInfo from './childCompents/DetailShopInfo'
 import DetailImageInfo from "./childCompents/DetailImageInfo"
 import DetailParamsInfo from './childCompents/DetailParamsInfo'
 import DetailCommentInfo from './childCompents/DetailCommetInfo'
+import DetailRecommend from './childCompents/DetailRecommend'
 
 export default {
   components: {
@@ -35,6 +38,7 @@ export default {
     DetailImageInfo,
     DetailParamsInfo,
     DetailCommentInfo,
+    DetailRecommend,
   },
   data() {
     return {
@@ -46,7 +50,9 @@ export default {
       shopInfo: {},
       detailInfo: {},
       itemParams: {},
-      commentInfo: {}
+      commentInfo: {},
+      recommend:{},
+      initRecommend: false,
     };
   },
    methods: {
@@ -88,6 +94,13 @@ export default {
       
     });
 
+    getRecommend().then(res => {
+      this.recommend = res
+      console.log(this.recommend);
+      if (this.recommend.data) {
+        this.initRecommend = true
+      }
+    })
   },
 
 
