@@ -10,7 +10,7 @@
       :detailInfo="detailInfo"
     ></detail-image-info>
      <detail-params-info v-if="initSuccess" :paramInfo="itemParams"></detail-params-info>
-    <datail-comment-info v-if="initSuccess" :commentInfo="commentInfo"></datail-comment-info>
+    <detail-comment-info v-if="initSuccess" :commentInfo="commentInfo"></detail-comment-info>
     <div class="foot"></div>
   </div>
 </template>
