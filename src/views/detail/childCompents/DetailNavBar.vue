@@ -1,6 +1,7 @@
 <template>
-  <div class=".title">
-    <nav-bar>
+  <div class ="title" id="t">
+    <div class="nav">
+      <nav-bar>
       <template v-slot:left> 
         <div class="back" @click="backClick">
           <img src="~assets/img/common/back.svg" alt="">
@@ -18,6 +19,8 @@
         </span>
       </template>
     </nav-bar>
+    </div>
+    
   </div>
 </template>
 
@@ -37,6 +40,7 @@ export default {
   methods: {
     titleClick(index) {
       this.currentIndex = index;
+      this.$emit('titleClick', index)
     },
     backClick() {
       this.$router.back()
@@ -47,6 +51,14 @@ export default {
 </script>
 
 <style lang="less" scoped>
+#t {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: white;
+}
 .title-item {
   margin: 0 10px 0 10px;
   font-size: 13px;
