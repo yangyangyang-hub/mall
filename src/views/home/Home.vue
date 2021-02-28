@@ -1,5 +1,4 @@
 <template>
-  <keep-alive>
     <div id="home">
       <nav-bar class="home-bar">
         <template v-slot:center>
@@ -26,7 +25,6 @@
       </div>
       <div class="foot"></div>
     </div>
-  </keep-alive>
 </template>
 
 <script>
@@ -113,6 +111,7 @@ export default {
       const that = this;
       let timer = setInterval(() => {
         let ispeed = Math.floor(-that.scrollTop / 5);
+        console.log(ispeed);
         document.documentElement.scrollTop = document.body.scrollTop =
           that.scrollTop + ispeed;
         if (that.scrollTop === 0) {

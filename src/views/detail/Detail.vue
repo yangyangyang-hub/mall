@@ -1,5 +1,5 @@
 <template>
-  <div class="detail">
+  <div id="detail">
     <detail-nav-bar @titleClick="titleclick" />
     <detail-swiper :topImages="topImages" />
     <detail-base-info v-if="initSuccess" :goods="goodsInfo"></detail-base-info>
@@ -20,6 +20,7 @@
     />
 
     <detail-recommend ref="recommend" v-if="initRecommend" :goods="recommend" />
+    <detail-bottom-bar></detail-bottom-bar>
 
     <div class="foot"></div>
   </div>
@@ -35,7 +36,8 @@ import DetailShopInfo from "./childCompents/DetailShopInfo";
 import DetailImageInfo from "./childCompents/DetailImageInfo";
 import DetailParamsInfo from "./childCompents/DetailParamsInfo";
 import DetailCommentInfo from "./childCompents/DetailCommetInfo";
-import DetailRecommend from "./childCompents/DetailRecommend";
+import DetailRecommend from "./childCompents/DetailRecommend"
+import DetailBottomBar from './childCompents/DetailBottomBar'
 
 export default {
   components: {
@@ -47,6 +49,8 @@ export default {
     DetailParamsInfo,
     DetailCommentInfo,
     DetailRecommend,
+    DetailBottomBar,
+
   },
   data() {
     return {
@@ -74,9 +78,28 @@ export default {
     },
     titleclick(index) {
       if (index == 3) {
+      // const that = this;
+      // let timer = setInterval(() => {
+      //   let ispeed = Math.floor(-that.$refs.recommend.$el.offsetTop / 5);
+      //   console.log(ispeed);
+        // if(this.$refs.recommend.$el.offsetTop ==
+        // document.documentElement.scrollTop + ispeed) {
+        //   console.log('nih');
+        //   clearInterval(timer);
+        // }
+        
+
+        // if (that.scrollTop === 0) {
+        //   clearInterval(timer);
+        // }
+      // }, 16);
+
         this.recommendTopYs = 0;
-        this.recommendTopYs = this.$refs.recommend.$el.offsetTop;
-        window.scrollTo(0, this.recommendTopYs-40);
+        this.recommendTopYs = this.$refs.recommend.$el.offsetTop - 40;
+        window.scrollTo(0, this.recommendTopYs);
+      // console.log(this.$refs.recommend.$el.offsetTop);
+      // console.log(document.documentElement.scrollTop);
+
       } else if (index == 2) {
         this.commentTopYs = 0;
         this.commentTopYs = this.$refs.comment.$el.offsetTop;
@@ -132,6 +155,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
+#detail{
+position: relative;
+z-index: 10;  
+// background-color: pink !important;
+}
 .foot {
   width: 100%;
   height: 49px;
