@@ -5,19 +5,21 @@
     <detail-base-info v-if="initSuccess" :goods="goodsInfo"></detail-base-info>
     <detail-shop-info v-if="initSuccess" :shop="shopInfo"></detail-shop-info>
 
-    <detail-image-info
-      v-if="initSuccess"
-      :detailInfo="detailInfo"
-    ></detail-image-info>
+    <detail-image-info v-if="initSuccess" :detailInfo="detailInfo" />
+
     <detail-params-info
+      ref="params"
       v-if="initSuccess"
       :paramInfo="itemParams"
-    ></detail-params-info>
+    />
+
     <detail-comment-info
+      ref="comment"
       v-if="initSuccess"
       :commentInfo="commentInfo"
-    ></detail-comment-info>
-    <detail-recommend v-if="initRecommend" :goods="recommend" />
+    />
+
+    <detail-recommend ref="recommend" v-if="initRecommend" :goods="recommend" />
 
     <div class="foot"></div>
   </div>
@@ -59,6 +61,9 @@ export default {
       commentInfo: {},
       recommend: {},
       initRecommend: false,
+      paramsTopYs: 0,
+      commentTopYs: 0,
+      recommendTopYs: 0,
     };
   },
   methods: {
@@ -68,16 +73,25 @@ export default {
       }, Number(this.time || 0));
     },
     titleclick(index) {
-      const that = this;
-      console.log(document.body.scrollTop);
-      // let timer = setInterval(() => {
-      //   document.documentElement.scrollTop = document.body.scrollTop 
-      // , 16);
+      if (index == 3) {
+        this.recommendTopYs = 0;
+        this.recommendTopYs = this.$refs.recommend.$el.offsetTop;
+        window.scrollTo(0, this.recommendTopYs-40);
+      } else if (index == 2) {
+        this.commentTopYs = 0;
+        this.commentTopYs = this.$refs.comment.$el.offsetTop;
+        window.scrollTo(0, this.commentTopYs);
+      } else if (index == 1) {
+        this.recommendTopYs = 0;
+        this.paramsTopYs = this.$refs.params.$el.offsetTop;
+        window.scrollTo(0, this.paramsTopYs-40);
+      } else {
+         window.scrollTo(0, 0);
+      }
     },
   },
 
   created() {
-
     this.id = this.$route.query.id;
 
     getDetail(this.id).then((res) => {
