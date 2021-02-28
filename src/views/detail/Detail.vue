@@ -20,7 +20,7 @@
     />
 
     <detail-recommend ref="recommend" v-if="initRecommend" :goods="recommend" />
-    <detail-bottom-bar></detail-bottom-bar>
+    <detail-bottom-bar @addToCart="addToCart"></detail-bottom-bar>
 
     <div class="foot"></div>
   </div>
@@ -112,6 +112,16 @@ export default {
          window.scrollTo(0, 0);
       }
     },
+    addToCart() {
+      const product ={}
+      product.image = this.topImages[0]
+      product.title = this.goodsInfo.title
+      product.desc = this.goodsInfo.desc
+      product.price = this.goodsInfo.price
+      product.id = this.id
+
+      this.$store.commit('addCart', product)
+    }
   },
 
   created() {
