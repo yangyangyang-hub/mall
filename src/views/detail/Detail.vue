@@ -120,7 +120,7 @@ export default {
       product.price = this.goodsInfo.price
       product.id = this.id
 
-      this.$store.commit('addCart', product)
+      this.$store.commit('addCart', product )
     }
   },
 

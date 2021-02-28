@@ -5,14 +5,18 @@
         <div>购物车({{$store.state.cartList.length}})</div>
       </template>
     </nav-bar>
+
+    <cart-list />
   </div>
 </template>
 
 <script>
 import NavBar from "../../components/common/navbar/NavBar.vue";
+import CartList from './childComponents/CartList.vue';
 export default {
   components: {
     NavBar,
+    CartList,
   },
 };
 </script>

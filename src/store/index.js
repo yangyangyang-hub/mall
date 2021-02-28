@@ -8,21 +8,24 @@ export default new Vuex.Store({
     cartList: []
   },
   mutations: {
-    addCart(state,payload) {
+    addCart(state, payload) {
       let oldProduct = null;
       for(let item of state.cartList) {
         if(item.id === payload.id) {
           oldProduct = item
         }
-        if (oldProduct) {
-          oldProduct.count += 1
-        } else {
-          payload.count = 1;
-          state.cartList.push(payload)
-        }
+        console.log(222);
       }
-     
-      state.cartList.push(payload)
+
+      if (oldProduct) {
+        oldProduct.count += 1
+        console.log(2222222);
+      } else {
+        payload.count = 1;
+        payload.checked = true
+        state.cartList.push(payload)
+      }
+
     }
   },
   actions: {
